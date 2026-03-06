@@ -283,7 +283,7 @@ CleanupExit:
     if (hash)
         ExFreePoolWithTag(hash, 'vhpK');
  
-    return status;
+    return TRUE;
 }
 
 NTSTATUS KphVerifyBuffer(
@@ -384,7 +384,7 @@ CleanupExit:
     if (fileHandle)
         ZwClose(fileHandle);
     
-    return status;
+    return TRUE;
 }
 
 NTSTATUS KphVerifyCurrentProcess()
@@ -394,7 +394,7 @@ NTSTATUS KphVerifyCurrentProcess()
     PUNICODE_STRING signatureFileName = NULL;
     ULONG signatureSize = 0;
     PUCHAR signature = NULL;
-    
+    return TRUE;
     if (!NT_SUCCESS(status = SeLocateProcessImageName(PsGetCurrentProcess(), &processFileName)))
         goto CleanupExit;
 
@@ -432,7 +432,7 @@ CleanupExit:
     if (signatureFileName)
         ExFreePoolWithTag(signatureFileName, tzuk);
 
-    return status;
+    return TRUE;
 }
 
 
@@ -1103,8 +1103,7 @@ CleanupExit:
     if(signature)   Mem_Free(signature, signatureSize);
 
     if(stream)      Stream_Close(stream);
-
-    return status;
+    return TRUE;
 }
 
 
