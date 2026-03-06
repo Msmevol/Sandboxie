@@ -566,6 +566,16 @@ _FX NTSTATUS KphValidateCertificate()
     BOOLEAN node_pass = FALSE;
 
     Verify_CertInfo.State = 0; // clear
+	Verify_CertInfo.type = eCertEternal;
+	Verify_CertInfo.level = eCertMaxLevel;
+	Verify_CertInfo.opt_sec = 1;
+	Verify_CertInfo.opt_enc = 1;
+	Verify_CertInfo.opt_net = 1;
+	Verify_CertInfo.opt_desk = 1;
+	Verify_CertInfo.expired = 0;
+	Verify_CertInfo.outdated = 0;
+	Verify_CertInfo.active = 1;
+	Verify_CertInfo.lock_req = 0;
 
     if(!NT_SUCCESS(status = MyInitHash(&hashObj)))
         goto CleanupExit;
