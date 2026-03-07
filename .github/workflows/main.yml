@@ -95,7 +95,7 @@ jobs:
         run: |
           Expand-Archive -Path "Sandboxie\install\nsis_updates.zip" -DestinationPath nsis_updates
           Copy-Item "nsis_updates\nsis\Contrib\Modern UI\System.nsh" "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib\Modern UI\" -Force
-          Copy-Item "nsis_updates\nsis\Contrib\Modern UI\Language files\*" "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib\Modern UI\Language files\" -Force
+          Copy-Item "nsis_updates\nsis\Contrib\Modern UI\Language files\*" "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib\Modern UI\Language files\" -Force -ErrorAction SilentlyContinue
 
       - name: Setup Iconv
         run: |
