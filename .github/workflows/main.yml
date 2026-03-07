@@ -97,9 +97,11 @@ jobs:
           if (Test-Path "nsis_updates\nsis\Contrib\Modern UI\System.nsh") {
             Copy-Item "nsis_updates\nsis\Contrib\Modern UI\System.nsh" "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib\Modern UI\" -Force
           }
-          if (Test-Path "nsis_updates\nsis\Contrib\Modern UI\Language files") {
-            Get-ChildItem "nsis_updates\nsis\Contrib\Modern UI\Language files\*" | ForEach-Object {
-              Copy-Item $_.FullName "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib\Modern UI\Language files\" -Force
+          $langFilesSource = "nsis_updates\nsis\Contrib\Modern UI\Language files"
+          $langFilesDest = "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib\Modern UI\Language files"
+          if (Test-Path $langFilesSource) {
+            Get-ChildItem "$langFilesSource\*" | ForEach-Object {
+              Copy-Item $_.FullName "$langFilesDest\" -Force
             }
           }
 
