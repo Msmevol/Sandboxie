@@ -109,12 +109,12 @@ jobs:
       - name: Build NSIS Installer (x64)
         run: |
           $env:SBIE_BUILDARCH = "x64"
-          & "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\makensis.exe" /DSBIE_BUILDARCH=x64 Sandboxie\install\SandboxieVS.nsi
+          & "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\makensis.exe" /DSBIE_BUILDARCH=x64 /DVERSION=5.72.3 Sandboxie\install\SandboxieVS.nsi
 
       - name: Build NSIS Installer (Win32)
         run: |
           $env:SBIE_BUILDARCH = "Win32"
-          & "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\makensis.exe" /DSBIE_BUILDARCH=Win32 Sandboxie\install\SandboxieVS.nsi
+          & "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\makensis.exe" /DSBIE_BUILDARCH=Win32 /DVERSION=5.72.3 Sandboxie\install\SandboxieVS.nsi
 
       - name: Upload Sandboxie Build
         uses: actions/upload-artifact@v7.0.0
