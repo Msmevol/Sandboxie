@@ -93,9 +93,15 @@ jobs:
 
       - name: Update NSIS files
         run: |
-          Expand-Archive -Path "Sandboxie\install\nsis_updates.zip" -DestinationPath nsis_updates
-          Copy-Item "nsis_updates\nsis\Contrib\Modern UI\System.nsh" "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib\Modern UI\" -Force
-          Copy-Item "nsis_updates\nsis\Contrib\Modern UI\Language files\*" "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib\Modern UI\Language files\" -Force -ErrorAction SilentlyContinue
+          Expand-Archive -Path "Sandboxie\install\nsis_updates.zip" -DestinationPath nsis_updates -Force
+          if (Test-Path "nsis_updates\nsis\Contrib\Modern UI\System.nsh") {
+            Copy-Item "nsis_updates\nsis\Contrib\Modern UI\System.nsh" "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib\Modern UI\" -Force
+          }
+          if (Test-Path "nsis_updates\nsis\Contrib\Modern UI\Language files") {
+            Get-ChildItem "nsis_updates\nsis\Contrib\Modern UI\Language files\*" | ForEach-Object {
+              Copy-Item $_.FullName "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib\Modern UI\Language files\" -Force
+            }
+          }
 
       - name: Setup Iconv
         run: |
