@@ -100,9 +100,11 @@ jobs:
       - name: Setup Iconv
         run: |
           mkdir tools\iconv -Force
-          choco install libiconv -y
-          Copy-Item "C:\ProgramData\chocolatey\lib\libiconv\tools\bin\iconv.exe" "tools\iconv\" -Force -ErrorAction SilentlyContinue
-          Copy-Item "C:\ProgramData\chocolatey\lib\libiconv\tools\bin\*.dll" "tools\iconv\" -Force -ErrorAction SilentlyContinue
+          # 使用预编译的 iconv 二进制文件
+          Invoke-WebRequest -Uri "https://github.com/mlocati/gettext-iconv-windows/releases/download/v0.21-v1.16/gettext0.21-iconv1.16-shared-64.zip" -OutFile iconv.zip
+          Expand-Archive -Path iconv.zip -DestinationPath iconv-temp
+          Copy-Item "iconv-temp\bin\iconv.exe" "tools\iconv\" -Force -ErrorAction SilentlyContinue
+          Copy-Item "iconv-temp\bin\*.dll" "tools\iconv\" -Force -ErrorAction SilentlyContinue
 
       - name: Build NSIS Installer (x64)
         run: |
