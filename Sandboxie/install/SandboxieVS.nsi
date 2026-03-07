@@ -1055,7 +1055,7 @@ WriteLoop:
     File /oname=${SBIEDLL_DLL} "${BIN_ROOT}\${SBIEDLL_DLL}"
 
     File /oname=${SBIESVC_EXE} "${BIN_ROOT}\SbieSvc.exe"
-    File /oname=${SBIESVC_EXE}.sig "${BIN_ROOT}\SbieSvc.exe.sig"
+    File /nonfatal /oname=${SBIESVC_EXE}.sig "${BIN_ROOT}\SbieSvc.exe.sig"
 
 !if "${_BUILDARCH}" == "x64"
 
@@ -1085,10 +1085,10 @@ WriteLoop:
     File /oname=${SANDBOXIE}WUAU.exe       "${BIN_ROOT}\SandboxieWUAU.exe"
 
     File /oname=${START_EXE} "${BIN_ROOT}\Start.exe"
-    File /oname=${START_EXE}.sig "${BIN_ROOT}\Start.exe.sig"
+    File /nonfatal /oname=${START_EXE}.sig "${BIN_ROOT}\Start.exe.sig"
 
     File /oname=${SBIECTRL_EXE} "${BIN_ROOT}\SbieCtrl.exe"
-    File /oname=${SBIECTRL_EXE}.sig "${BIN_ROOT}\SbieCtrl.exe.sig"
+    File /nonfatal /oname=${SBIECTRL_EXE}.sig "${BIN_ROOT}\SbieCtrl.exe.sig"
 
     File "..\install\Templates.ini"
 
