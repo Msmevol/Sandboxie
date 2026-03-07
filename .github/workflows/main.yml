@@ -94,8 +94,7 @@ jobs:
       - name: Update NSIS files
         run: |
           Expand-Archive -Path "Sandboxie\install\nsis_updates.zip" -DestinationPath nsis_updates -Force
-          Copy-Item "nsis_updates\nsis\Contrib\Modern UI\System.nsh" "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib\Modern UI\" -Force
-          robocopy "nsis_updates\nsis\Contrib\Modern UI\Language files" "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib\Modern UI\Language files" *.nsh /S
+          robocopy "nsis_updates\nsis\Contrib" "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib" /E /IS
           if ($LASTEXITCODE -ge 8) { exit 1 }
 
       - name: Setup Iconv
