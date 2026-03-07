@@ -81,43 +81,38 @@ jobs:
             Copy-Item SandboxieTools\Release\*.exe BuildOutput\x64\
           }
 
-      - name: Install NSIS 2.5
+      - name: Install NSIS via Chocolatey
         run: |
-          Invoke-WebRequest -Uri "https://sourceforge.net/projects/nsis/files/NSIS%202/2.50/nsis-2.50-setup.exe/download" -OutFile nsis-setup.exe -UserAgent "Mozilla/5.0"
-          Start-Process -FilePath "nsis-setup.exe" -ArgumentList "/S" -Wait
+          choco install nsis.portable --version=2.50 -y
           
       - name: Install InetC Plugin
         run: |
           Invoke-WebRequest -Uri "https://nsis.sourceforge.io/mediawiki/images/c/c9/Inetc.zip" -OutFile inetc.zip
           Expand-Archive -Path inetc.zip -DestinationPath inetc
-          Copy-Item "inetc\Plugins\x86-ansi\InetC.dll" "C:\Program Files (x86)\NSIS\Plugins\" -Force
+          Copy-Item "inetc\Plugins\x86-ansi\InetC.dll" "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Plugins\" -Force
 
       - name: Update NSIS files
         run: |
           Expand-Archive -Path "Sandboxie\install\nsis_updates.zip" -DestinationPath nsis_updates
-          Copy-Item "nsis_updates\nsis\Contrib\Modern UI\System.nsh" "C:\Program Files (x86)\NSIS\Contrib\Modern UI\" -Force
-          Copy-Item "nsis_updates\nsis\Contrib\Modern UI\Language files\*" "C:\Program Files (x86)\NSIS\Contrib\Modern UI\Language files\" -Force
+          Copy-Item "nsis_updates\nsis\Contrib\Modern UI\System.nsh" "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib\Modern UI\" -Force
+          Copy-Item "nsis_updates\nsis\Contrib\Modern UI\Language files\*" "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib\Modern UI\Language files\" -Force
 
       - name: Setup Iconv
         run: |
           mkdir tools\iconv -Force
-          Invoke-WebRequest -Uri "https://sourceforge.net/projects/gnuwin32/files/libiconv/1.9.2-1/libiconv-1.9.2-1-bin.zip/download" -OutFile iconv-bin.zip -UserAgent "Mozilla/5.0"
-          Invoke-WebRequest -Uri "https://sourceforge.net/projects/gnuwin32/files/libiconv/1.9.2-1/libiconv-1.9.2-1-dep.zip/download" -OutFile iconv-dep.zip -UserAgent "Mozilla/5.0"
-          Expand-Archive -Path iconv-bin.zip -DestinationPath iconv-bin
-          Expand-Archive -Path iconv-dep.zip -DestinationPath iconv-dep
-          Copy-Item "iconv-bin\bin\iconv.exe" "tools\iconv\" -Force
-          Copy-Item "iconv-bin\bin\libiconv2.dll" "tools\iconv\" -Force
-          Copy-Item "iconv-dep\bin\libintl3.dll" "tools\iconv\" -Force
+          choco install libiconv -y
+          Copy-Item "C:\ProgramData\chocolatey\lib\libiconv\tools\bin\iconv.exe" "tools\iconv\" -Force -ErrorAction SilentlyContinue
+          Copy-Item "C:\ProgramData\chocolatey\lib\libiconv\tools\bin\*.dll" "tools\iconv\" -Force -ErrorAction SilentlyContinue
 
       - name: Build NSIS Installer (x64)
         run: |
           $env:SBIE_BUILDARCH = "x64"
-          & "C:\Program Files (x86)\NSIS\makensis.exe" /DSBIE_BUILDARCH=x64 Sandboxie\install\SandboxieVS.nsi
+          & "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\makensis.exe" /DSBIE_BUILDARCH=x64 Sandboxie\install\SandboxieVS.nsi
 
       - name: Build NSIS Installer (Win32)
         run: |
           $env:SBIE_BUILDARCH = "Win32"
-          & "C:\Program Files (x86)\NSIS\makensis.exe" /DSBIE_BUILDARCH=Win32 Sandboxie\install\SandboxieVS.nsi
+          & "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\makensis.exe" /DSBIE_BUILDARCH=Win32 Sandboxie\install\SandboxieVS.nsi
 
       - name: Upload Sandboxie Build
         uses: actions/upload-artifact@v7.0.0
