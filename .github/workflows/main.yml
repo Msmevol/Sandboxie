@@ -95,7 +95,7 @@ jobs:
         run: |
           Expand-Archive -Path "Sandboxie\install\nsis_updates.zip" -DestinationPath nsis_updates -Force
           robocopy "nsis_updates\nsis\Contrib" "C:\ProgramData\chocolatey\lib\nsis.portable\tools\nsis-2.50\Contrib" /E /IS
-          if ($LASTEXITCODE -ge 8) { exit 1 }
+          if ($LASTEXITCODE -ge 8) { exit $LASTEXITCODE } else { exit 0 }
 
       - name: Setup Iconv
         run: |
