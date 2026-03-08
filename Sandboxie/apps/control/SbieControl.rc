@@ -121,25 +121,7 @@ BEGIN
         MENUITEM "3446",                        ID_CONF_EDIT
         MENUITEM "3447",                        ID_CONF_RELOAD
     END
-    POPUP "3451"
-    BEGIN
-        MENUITEM "3504",                        ID_HELP_SUPPORT
-        MENUITEM "3505",                        ID_HELP_CONTRIBUTION
-        MENUITEM SEPARATOR
-        MENUITEM "3452",                        ID_HELP_TOPICS
-        MENUITEM "3453",                        ID_HELP_TUTORIAL
-        MENUITEM "3469",                        ID_HELP_WHATSNEW
-        //MENUITEM "3468",                        ID_HELP_MIGRATION
-        MENUITEM "3457",                        ID_HELP_FORUM
-        MENUITEM SEPARATOR
-        MENUITEM "3454",                        ID_HELP_UPDATE
-        MENUITEM "3467",                        ID_HELP_UPGRADE
-        MENUITEM SEPARATOR
-        MENUITEM "3506",                        ID_HELP_GET_CERT
-        MENUITEM "3507",                        ID_HELP_SET_CERT
-        MENUITEM SEPARATOR
-        MENUITEM "3456",                        ID_HELP_ABOUT
-    END
+
     MENUITEM "3467",                        ID_HELP_UPGRADE
 END
 
