@@ -121,8 +121,6 @@ BEGIN
         MENUITEM "3446",                        ID_CONF_EDIT
         MENUITEM "3447",                        ID_CONF_RELOAD
     END
-
-    MENUITEM "3467",                        ID_HELP_UPGRADE
 END
 
 SANDBOX_MENU MENU
