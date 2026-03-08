@@ -127,7 +127,7 @@ jobs:
       - name: Upload NSIS Installers
         uses: actions/upload-artifact@v7.0.0
         with:
-          name: Sandboxie-Installers
+          name: Xdefend-Installer
           path: |
-            Sandboxie\Bin\x64\SandboxieInstall*.exe
+            Sandboxie\Bin\x64\*Install*.exe
           retention-days: 30
