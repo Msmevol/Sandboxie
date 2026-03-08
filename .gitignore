@@ -3,6 +3,18 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Build outputs and installers
+build-output/
+Xdefend-Installer/
+Sandboxie-Build-x64/
+
+# Deployment scripts (local only)
+deploy*.py
+deploy*.bat
+deploy*.ps1
+setup-task.bat
+auto-cicd.py
+
 SbieDebug
 SbieRelease
 MsgSbieDebug
