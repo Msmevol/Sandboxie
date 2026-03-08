@@ -129,5 +129,5 @@ jobs:
         with:
           name: Sandboxie-Installers
           path: |
-            Sandboxie\Bin\SandboxieInstall*.exe
+            Sandboxie\Bin\x64\SandboxieInstall*.exe
           retention-days: 30
