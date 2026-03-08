@@ -2150,6 +2150,8 @@ void CMyFrame::OnTimer(UINT_PTR nIDEvent)
         // show what's new
         //
 
+        // Disabled: Do not show what's new dialog after installation
+        /*
         if (m_ShowWhatsNew && (! inModalState)) {
 
             m_ShowWhatsNew = FALSE;
@@ -2157,6 +2159,7 @@ void CMyFrame::OnTimer(UINT_PTR nIDEvent)
             OnCmdHelpWhatsNew();
             return;
         }
+        */
 
         //
         // resync shortcuts?  usually Sandboxie Control does not resync
