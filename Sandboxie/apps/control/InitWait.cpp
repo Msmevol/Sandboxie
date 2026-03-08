@@ -287,7 +287,8 @@ void CInitWait::OnTimer(UINT_PTR nIDEvent)
 
 LRESULT CInitWait::OnTaskbarCreated(WPARAM wParam, LPARAM lParam)
 {
-    CMyApp::CreateTrayIcon(this, m_hIconPtr, CMyMsg(MSG_3303));
+    // Tray icon disabled
+    // CMyApp::CreateTrayIcon(this, m_hIconPtr, CMyMsg(MSG_3303));
     return 0;
 }
 

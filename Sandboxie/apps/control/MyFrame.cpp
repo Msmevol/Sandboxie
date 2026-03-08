@@ -301,7 +301,8 @@ CMyFrame::CMyFrame(BOOL ForceVisible, BOOL ForceSync, BOOL PostSetup)
 
     RefreshTrayIcon();
 
-    OnTaskbarCreated(0, 0);
+    // Tray icon disabled
+    // OnTaskbarCreated(0, 0);
 
     //
     // create message dialog
@@ -1858,7 +1859,8 @@ void CMyFrame::OnContextMenu(CWnd *pWnd, CPoint pt)
 
 LRESULT CMyFrame::OnTaskbarCreated(WPARAM wParam, LPARAM lParam)
 {
-    CMyApp::CreateTrayIcon(this, m_hIconPtr, CString());
+    // Tray icon disabled
+    // CMyApp::CreateTrayIcon(this, m_hIconPtr, CString());
     return 0;
 }
 
