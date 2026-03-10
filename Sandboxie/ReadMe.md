@@ -1,9 +1,16 @@
-## Sandboxie Classic build instructions
+## Xdefend Build Instructions
 
-- Please note: there is another [ReadMe.md](./install/ReadMe.md) file in the [install](./install/) folder that explains how to create the Sandboxie Classic installers.
-- Please note: the following instructions may lag behind the [CI workflow](../.github/workflows/main.yml), so be aware of any version change.
+**Based on Sandboxie Classic**
 
-Sandboxie Classic builds under Visual Studio 2019, as it offers the widest compatibility range, allowing us to build a driver which works with Windows 7 up to Windows 11.
+- Original project: [Sandboxie](https://github.com/sandboxie-plus/Sandboxie)
+- License: GPL v3
+- Maintained by: xdefend_sandboxie
+
+---
+
+### Build Requirements
+
+Xdefend builds under Visual Studio 2019, offering compatibility with Windows 7 through Windows 11.
 
 1) Download [Visual Studio 2019](https://visualstudio.microsoft.com/vs/older-downloads/#visual-studio-2019-and-other-products)
 2) In the Visual Studio Installer, tick _Desktop development with C++_
@@ -20,44 +27,63 @@ Sandboxie Classic builds under Visual Studio 2019, as it offers the widest compa
 	- This is for example necessary if VS 2022 is also installed with the default desktop C++ components
 9) To compile for x64, it's necessary to first compile `Solution/core/LowLevel` for Win32 (x86)
 
-### Source projects (in alphabetical order)
+---
 
-> Note: the core of Sandboxie are the driver, SbieDrv, the service, SbieSvc, and the injection DLL, SbieDll. Study these projects first.
+### Source Projects (in alphabetical order)
 
-[Common (\apps\common)](./apps/common). It builds common.lib, which contains some common GUI objects, and it is used by the Control and Start projects.
+> Note: the core of Xdefend are the driver (SbieDrv), the service (SbieSvc), and the injection DLL (SbieDll). Study these projects first.
 
-[KmdUtil (\install\kmdutil)](./install/kmdutil). It builds KmdUtil.exe, which is used during the installation process, e.g. to start/stop the Sbie driver (SbieDrv.sys).
+**Common** (\apps\common). Builds common.lib, which contains common GUI objects used by Control and Start projects.
 
-[LowLevel (\core\low)](./core/low). It creates LowLevel.dll, which is used in code injection. LowLevel.dll is embedded into SbieSvc.exe as a resource (see core\svc\lowlevel.rc for more information).
+**KmdUtil** (\install\kmdutil). Builds KmdUtil.exe, used during installation to start/stop the driver (SbieDrv.sys).
 
-[Parse (\msgs)](./msgs). It creates the Sbie messages files.
+**LowLevel** (\core\low). Creates LowLevel.dll, used in code injection. Embedded into SbieSvc.exe as a resource.
 
-[SandboxBITS (apps\com\BITS)](./apps/com/BITS). It creates SandboxieBITS.exe (Background Intelligent Transfer Service).
+**Parse** (\msgs). Creates the Xdefend messages files.
 
-[SandboxCrypto (apps\com\Crypto)](./apps/com/Crypto). It creates SandboxieCrypto.exe.
+**SandboxBITS** (apps\com\BITS). Creates SandboxieBITS.exe (Background Intelligent Transfer Service).
 
-[SandboxieInstall (\install\release)](./install/release). It creates the combined x64/x86 installer SandboxieInstall.exe by combining the x64 & x86 installer binaries into a RC file.
-> Note: SandboxieInstall is not built during the normal SLN build. It must be built manually after the x64 & x86 installers are completed.
+**SandboxCrypto** (apps\com\Crypto). Creates SandboxieCrypto.exe.
 
-[SandboxRpcSs (\apps\com\RpcSs)](./apps/com/RpcSs). It creates SandboxieRpcSs.exe, the Sbie's wrapper for the Remote Procedure Call Sub-System.
+**SandboxieInstall** (\install\release). Creates the combined x64/x86 installer XdefendInstall.exe.
+> Note: Must be built manually after x64 & x86 installers are completed.
 
-[SandboxWUAU (\apps\com\WUAU)](./apps/com/WUAU). It creates SandboxieWUAU.exe, the Sbie's wrapper for the Windows Automatic Update Service (WUAUSERV).
+**SandboxRpcSs** (\apps\com\RpcSs). Creates SandboxieRpcSs.exe, wrapper for Remote Procedure Call Sub-System.
 
-[SbieControl (\apps\control)](./apps/control). It builds SbieCtrl.exe, the Sandboxie Control app that displays real-time sandboxed application activity.
+**SandboxWUAU** (\apps\com\WUAU). Creates SandboxieWUAU.exe, wrapper for Windows Automatic Update Service.
 
-[SbieIni (\apps\ini)](./apps/ini). It creates SbieIni.exe, a utility for querying and updating the sandboxie.ini configuration file.
+**SbieControl** (\apps\control). Builds SbieCtrl.exe, the Xdefend Control app displaying real-time sandboxed activity.
 
-[SboxDcomLaunch (\apps\com\DcomLaunch)](./apps/com/DcomLaunch). It creates SandboxieDcomLaunch.exe.
+**SbieIni** (\apps\ini). Creates SbieIni.exe, utility for querying and updating the xdefend.ini configuration file.
 
-[SboxDll (\core\dll)](./core/dll). It creates the Sbie injection DLL, which injects into every process running in the sandbox.
+**SboxDcomLaunch** (\apps\com\DcomLaunch). Creates SandboxieDcomLaunch.exe.
 
-[SboxDrv (\core\drv)](./core/drv). It creates the Sbie kernel-mode driver.
+**SboxDll** (\core\dll). Creates the injection DLL, injected into every sandboxed process.
 
-[SboxHostDll (\SboxHostDll)](./SboxHostDll). It builds the Sbie host injection DLL, which is injected into host processes that must be redirected into the sandbox.
-Currently, the only app this is used for is MS Office. SboxHostDll.dll is injected into OfficeClickToRun.exe.
+**SboxDrv** (\core\drv). Creates the kernel-mode driver.
 
-[SboxMsg (\msgs)](./msgs). It creates SboxMsg.dll, which contains the Sbie user messages in various languages.
+**SboxHostDll** (\SboxHostDll). Builds the host injection DLL, injected into host processes requiring sandbox redirection.
 
-[SboxSvc (\core\svc)](./core/svc). It creates the Sbie service.
+**SboxMsg** (\msgs). Creates SboxMsg.dll, containing user messages in various languages.
 
-[Start (\apps\start)](./apps/start). It creates start.exe, which is used to start processes in the sandbox.
+**SboxSvc** (\core\svc). Creates the Xdefend service.
+
+**Start** (\apps\start). Creates start.exe, used to start processes in the sandbox.
+
+---
+
+### License
+
+This project is licensed under GPL v3. See [COPYING](./COPYING) for details.
+
+### Original Project
+
+Based on Sandboxie Classic:
+- Repository: https://github.com/sandboxie-plus/Sandboxie
+- Copyright 2004-2020 Sandboxie Holdings, LLC
+- Copyright 2020-2025 David Xanatos, xanasoft.com
+
+### Contact
+
+- Website: https://xdefend.sandboxie.com
+- Maintained by: xdefend_sandboxie

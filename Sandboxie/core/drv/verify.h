@@ -1,5 +1,6 @@
-/*
- * Copyright (C) 2021-2024 David Xanatos, xanasoft.com
+﻿/*
+ * Copyright (C) 2021-2024 David Xanatos, xdefend.xdefend.sandboxie.com
+ * Copyright 2026 xdefend_sandboxie
  *
  * Process Hacker is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

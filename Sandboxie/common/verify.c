@@ -1,5 +1,6 @@
-/*
- * Copyright 2021 David Xanatos, xanasoft.com
+﻿/*
+ * Copyright 2021 David Xanatos, xdefend.xdefend.sandboxie.com
+ * Copyright 2026 xdefend_sandboxie
  * 
  * Based on the processhacker's CustomSignTool, Copyright 2016 wj32
  *

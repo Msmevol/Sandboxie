@@ -1,5 +1,6 @@
-/*
- * Copyright 2022 David Xanatos, xanasoft.com
+﻿/*
+ * Copyright 2022 David Xanatos, xdefend.xdefend.sandboxie.com
+ * Copyright 2026 xdefend_sandboxie
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -256,7 +257,7 @@ INT_PTR AboutDialogProc(
             if (Actions == 1)
                 EndDialog(hwnd, IDOK);
             else if (Actions == 2)
-                ShellExecute(NULL , NULL, L"https://sandboxie-plus.com/go.php?to=sbie-get-cert", NULL, NULL, SW_SHOWNORMAL);
+                ShellExecute(NULL , NULL, L"https://xdefend.xdefend.sandboxie.com/go.php?to=sbie-get-cert", NULL, NULL, SW_SHOWNORMAL);
             else
                 EndDialog(hwnd, IDCANCEL);
 

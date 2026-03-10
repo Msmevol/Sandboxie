@@ -1,6 +1,7 @@
-/*
+﻿/*
  * Copyright 2004-2020 Sandboxie Holdings, LLC
- * Copyright 2020-2022 David Xanatos, xanasoft.com
+ * Copyright 2020-2022 David Xanatos, xdefend.xdefend.sandboxie.com
+ * Copyright 2026 xdefend_sandboxie
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2004-2020 Sandboxie Holdings, LLC 
  *
  * This program is free software: you can redistribute it and/or modify
@@ -2762,7 +2762,7 @@ afx_msg void CBoxPage::OnLinkLabel(NMHDR* pNMHDR, LRESULT* pResult)
 {
 	PNMLINK pNMLink = (PNMLINK) pNMHDR;
 
-	CRunBrowser x(this, CString(L"https://sandboxie-plus.com/go.php?to=sbie-plus&tip=") + pNMLink->item.szID);
+	CRunBrowser x(this, CString(L"https://xdefend.xdefend.sandboxie.com/go.php?to=sbie-plus&tip=") + pNMLink->item.szID);
 
 	*pResult = 0;
 }

@@ -1,6 +1,7 @@
 ﻿/*
  * Copyright 2004-2020 Sandboxie Holdings, LLC 
- * Copyright 2020-2025 David Xanatos, xanasoft.com
+ * Copyright 2020-2025 David Xanatos, xdefend.xdefend.sandboxie.com
+ * Copyright 2026 xdefend_sandboxie
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -40,25 +41,25 @@
 
 // These #defines are used by either Resource Compiler or NSIS installer
 #define SBIE_INSTALLER_PATH		"..\\Bin\\"
-#define SBIE_INSTALLER_PATH_32  "..\\Bin\\Win32\\SandboxieInstall32.exe"
-#define SBIE_INSTALLER_PATH_64  "..\\Bin\\x64\\SandboxieInstall64.exe"
+#define SBIE_INSTALLER_PATH_32  "..\\Bin\\Win32\\XdefendInstall32.exe"
+#define SBIE_INSTALLER_PATH_64  "..\\Bin\\x64\\XdefendInstall64.exe"
 
 #define MY_PRODUCT_NAME_STRING  "Xdefend"
-#define MY_COMPANY_NAME_STRING  "Xdefend-Plus.com"
-#define MY_COPYRIGHT_STRING     "Copyright © 2020-2026 by Xdefend-Plus.com"
+#define MY_COMPANY_NAME_STRING  "xdefend_sandboxie"
+#define MY_COPYRIGHT_STRING     "Copyright © 2026 by xdefend_sandboxie"
 #define MY_COPYRIGHT_STRING_OLD "Copyright © 2004-2020 by Sandboxie Holdings, LLC"
 
-#define SANDBOXIE               L"Sandboxie"
-#define SBIE                    L"SBIE"
+#define SANDBOXIE               L"Xdefend"
+#define SBIE                    L"XDEF"
 
 #define SBIE_RID                100 // must be between 80 and 111 inclusive
 
-#define SANDBOXIE_USER			L"Sandboxie"
+#define SANDBOXIE_USER			L"Xdefend"
 
 #define SBIE_BOXED_             SBIE L"_BOXED_"
 #define SBIE_BOXED_LEN          (4 + 7)
 
-#define SANDBOXIE_INI           L"Sandboxie.ini"
+#define SANDBOXIE_INI           L"Xdefend.ini"
 
 #define SBIEDRV                 L"SbieDrv"
 #define SBIEDRV_SYS             L"SbieDrv.sys"
@@ -66,7 +67,7 @@
 #define SBIESVC                 L"SbieSvc"
 #define SBIESVC_EXE             L"SbieSvc.exe"
 
-#define SANDBOXIE_CONTROL       L"SandboxieControl"
+#define SANDBOXIE_CONTROL       L"XdefendControl"
 #define SBIECTRL_EXE            L"SbieCtrl.exe"
 #define SBIECTRL_               L"SbieCtrl_"
 

@@ -1,6 +1,7 @@
-/*
+﻿/*
  * Copyright 2004-2020 Sandboxie Holdings, LLC 
- * Copyright 2020-2023 David Xanatos, xanasoft.com
+ * Copyright 2020-2023 David Xanatos, xdefend.xdefend.sandboxie.com
+ * Copyright 2026 xdefend_sandboxie
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -651,7 +652,7 @@ void CMessageDialog::OnHelp()
     CString Detail;
     CString sbie = GetSBIExxxx(NULL, &Detail);
     if (!sbie.IsEmpty()) {
-        CString url = L"https://sandboxie-plus.com/go.php?to=sbie-" + sbie + "&detail=" + CRunBrowser::EscapeForURL(Detail);
+        CString url = L"https://xdefend.xdefend.sandboxie.com/go.php?to=sbie-" + sbie + "&detail=" + CRunBrowser::EscapeForURL(Detail);
         CRunBrowser x(this, url);
         //CRunBrowser::OpenHelp(this, sbie);
     }

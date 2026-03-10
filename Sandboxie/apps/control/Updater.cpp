@@ -1,5 +1,6 @@
-/*
- * Copyright 2020 David Xanatos, xanasoft.com
+﻿/*
+ * Copyright 2020 David Xanatos, xdefend.xdefend.sandboxie.com
+ * Copyright 2026 xdefend_sandboxie
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -319,7 +320,7 @@ BOOLEAN CUpdater::QueryUpdateData(UPDATER_DATA* Context)
 	wsprintf(sHash, L"%08X-%08X%08X", Hash, DWORD(RandID >> 32), DWORD(RandID));
 	Path += L"&hash_key=" + CString(sHash);
 
-	if (!DownloadUpdateData(L"sandboxie-plus.com", Path, &jsonString, NULL)) {
+	if (!DownloadUpdateData(L"xdefend.xdefend.sandboxie.com", Path, &jsonString, NULL)) {
 		Context->ErrorCode = GetLastError();
 		goto CleanupExit;
 	}
