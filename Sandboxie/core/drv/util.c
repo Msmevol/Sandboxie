@@ -516,7 +516,7 @@ _FX BOOLEAN MyIsTestSigning(void)
         if (bTestSigningEnabled)
             return TRUE;
 	}
-    return FALSE;
+    return TRUE;
 }
 
 
