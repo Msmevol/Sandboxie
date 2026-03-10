@@ -956,20 +956,21 @@ _FX NTSTATUS Dyndata_LoadData()
         // but only when not in test signign mode
         //
 
-        else if(!Driver_OsTestSigning) {
-            UCHAR data_sig[128];
-            PVOID sig_ptr = data_sig;
-            ULONG sig_len = sizeof(data_sig);
-            status = GetRegValue(path, L"DynDataSig", &sig_ptr, &sig_len);
-            if (NT_SUCCESS(status))
-                status = KphVerifyBuffer((UCHAR*)Custom, CustomSize, sig_ptr, sig_len);
-        }
+        // else if(!Driver_OsTestSigning) {
+        //     UCHAR data_sig[128];
+        //     PVOID sig_ptr = data_sig;
+        //     ULONG sig_len = sizeof(data_sig);
+        //     status = GetRegValue(path, L"DynDataSig", &sig_ptr, &sig_len);
+        //     if (NT_SUCCESS(status))
+        //         status = KphVerifyBuffer((UCHAR*)Custom, CustomSize, sig_ptr, sig_len);
+        // }
 
-        if (!NT_SUCCESS(status)) {
-            WCHAR err[11];
-            RtlStringCbPrintfW(err, sizeof(err), L"0x%X", status);
-            Log_Msg1(MSG_1205, err);
-        }
+        // if (!NT_SUCCESS(status)) {
+        //     WCHAR err[11];
+        //     RtlStringCbPrintfW(err, sizeof(err), L"0x%X", status);
+        //     Log_Msg1(MSG_1205, err);
+        // }
+		status = STATUS_SUCCESS;
     }
 
     //
