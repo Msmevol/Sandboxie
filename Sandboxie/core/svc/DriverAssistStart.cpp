@@ -288,13 +288,13 @@ driver_started:
     // continue with driver/service init
     //
 
-    if (ok) {
-        rc = SbieApi_Call(API_SET_SERVICE_PORT, 1, (ULONG_PTR)m_instance->m_PortHandle);
-        if (rc != 0) {
-            LogEvent(MSG_9234, 0x9361, rc);
-            ok = false;
-        }
-    }
+    // if (ok) {
+        // rc = SbieApi_Call(API_SET_SERVICE_PORT, 1, (ULONG_PTR)m_instance->m_PortHandle);
+        // if (rc != 0) {
+            // LogEvent(MSG_9234, 0x9361, rc);
+            // ok = false;
+        // }
+    // }
 
     if (ok) {
         SbieDll_InjectLow_InitSyscalls(TRUE);
