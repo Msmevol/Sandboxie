@@ -535,6 +535,24 @@ SCertInfo Verify_CertInfo = { 0 };
 
 _FX NTSTATUS KphValidateCertificate()
 {
+	// 设置为永久版（Eternal）证书状态
+    Verify_CertInfo.State = 0;
+    Verify_CertInfo.type = eCertEternal;        // 永久版类型
+    Verify_CertInfo.level = eCertMaxLevel;      // 最高等级
+    Verify_CertInfo.opt_sec = 1;                // 启用安全功能
+    Verify_CertInfo.opt_enc = 1;                // 启用加密功能
+    Verify_CertInfo.opt_net = 1;                // 启用网络功能
+    Verify_CertInfo.opt_desk = 1;               // 启用桌面功能
+    Verify_CertInfo.expired = 0;                // 未过期
+    Verify_CertInfo.outdated = 0;               // 未过时
+    Verify_CertInfo.active = 1;                 // 激活状态
+    Verify_CertInfo.grace_period = 0;           // 不在宽限期
+    Verify_CertInfo.locked = 0;                 // 未锁定
+    Verify_CertInfo.lock_req = 0;               // 不需要锁定
+    Verify_CertInfo.expirers_in_sec = -1;       // 永不过期
+    
+    // 直接返回成功，不执行后续的证书文件读取和验证
+    return STATUS_SUCCESS;
     BOOLEAN CertDbg = FALSE;
 
     static const WCHAR *path_cert = L"%s\\Certificate.dat";
